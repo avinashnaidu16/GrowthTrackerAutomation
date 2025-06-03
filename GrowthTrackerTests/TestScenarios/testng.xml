@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<listeners>
+		<listener class-name="com.GrowthTrackerTests.Utilities.Listener" />
+	</listeners>
+
+	<test thread-count="1" name="Test">
+		<groups>
+			<run>
+				<include name="Smoke"></include>
+			</run>
+		</groups>
+		<!--<classes>
+			<class name="com.PRFTests.TestsPageSpecific.UserModuleTests">
+			</class>
+		</classes>-->
+		
+		<classes>
+			<class name="com.GrowthTrackerTests.TestsPageSpecific.GrowthTrackerFormTests">
+			</class>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!--
+Suite -->
+
+

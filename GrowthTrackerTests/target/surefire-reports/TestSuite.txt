@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 1, Time elapsed: 299.315 s <<< FAILURE! - in TestSuite
+verifyAddLocalPitch(com.GrowthTrackerTests.TestsPageSpecific.GrowthTrackerFormTests)  Time elapsed: 195.97 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "String.split(String)" because "expectedTooltips" is null
+	at com.GrowthTrackerTests.TestsPageSpecific.GrowthTrackerFormTests.verifyAddLocalPitch(GrowthTrackerFormTests.java:2176)
+
