@@ -4,19 +4,23 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+- QABranch
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
-- task: Maven@3
+- task: Maven@4
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: 'GrowthTrackerTests/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+- task: PublishAllureReport@1
+  displayName: Allure Report
+  inputs:
+    allureVersion: 2.27.0
+    testResultsDir: 'GrowthTrackerTests/allure-results'
+  condition: succeededOrFailed()
