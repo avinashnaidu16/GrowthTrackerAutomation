@@ -1,0 +1,26 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- QABranch
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: Maven@4
+  inputs:
+    mavenPomFile: 'GrowthTrackerTests/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    jdkArchitectureOption: 'x64'
+    goals: 'package'
+- task: PublishAllureReport@1
+  displayName: Allure Report
+  inputs:
+    allureVersion: 2.27.0
+    testResultsDir: 'GrowthTrackerTests/allure-results'
+  condition: succeededOrFailed()
